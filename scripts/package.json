@@ -1,0 +1,14 @@
+{
+  "name": "fantasy-epl-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for fetching EPL data from API-Sports",
+  "scripts": {
+    "fetch-players": "npx ts-node fetch-players.ts",
+    "fetch-stats": "npx ts-node fetch-gameweek-stats.ts"
+  },
+  "dependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}

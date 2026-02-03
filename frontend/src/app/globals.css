@@ -1,0 +1,215 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 152 40% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 152 30% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --primary: 145 80% 42%;
+    --primary-foreground: 152 40% 6%;
+
+    --secondary: 152 25% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 152 20% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 152 20% 20%;
+    --input: 152 20% 20%;
+    --ring: 145 80% 42%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Main gradient background */
+.main-gradient {
+  background: linear-gradient(135deg,
+    hsl(152 40% 6%) 0%,
+    hsl(152 35% 10%) 25%,
+    hsl(145 30% 12%) 50%,
+    hsl(152 35% 8%) 75%,
+    hsl(152 40% 6%) 100%
+  );
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: radial-gradient(ellipse at 50% 0%,
+    hsla(145, 60%, 25%, 0.4) 0%,
+    hsla(152, 40%, 10%, 0.2) 50%,
+    transparent 70%
+  );
+}
+
+/* Card with glass effect */
+.glass-card {
+  background: linear-gradient(135deg,
+    hsla(152, 30%, 15%, 0.8) 0%,
+    hsla(152, 25%, 10%, 0.9) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(145, 50%, 30%, 0.2);
+}
+
+/* Glow effects */
+.glow-green {
+  box-shadow: 0 0 30px hsla(145, 80%, 42%, 0.3),
+              0 0 60px hsla(145, 80%, 42%, 0.1);
+}
+
+.glow-gold {
+  box-shadow: 0 0 30px hsla(38, 92%, 50%, 0.3),
+              0 0 60px hsla(38, 92%, 50%, 0.1);
+}
+
+/* Soccer ball geometric pattern (SVG inline) */
+.soccer-pattern {
+  position: relative;
+}
+
+.soccer-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon fill='%2322c55e' points='100,10 140,40 140,80 100,110 60,80 60,40'/%3E%3Cpolygon fill='%2316a34a' points='100,10 60,40 30,20 50,0 100,0'/%3E%3Cpolygon fill='%2316a34a' points='100,10 140,40 170,20 150,0 100,0'/%3E%3Cpolygon fill='%2315803d' points='140,40 170,20 200,40 200,80 170,100 140,80'/%3E%3Cpolygon fill='%2315803d' points='60,40 30,20 0,40 0,80 30,100 60,80'/%3E%3Cpolygon fill='%2322c55e' points='100,110 140,80 170,100 170,140 140,160 100,140'/%3E%3Cpolygon fill='%2322c55e' points='100,110 60,80 30,100 30,140 60,160 100,140'/%3E%3Cpolygon fill='%2316a34a' points='100,140 140,160 140,200 100,200'/%3E%3Cpolygon fill='%2316a34a' points='100,140 60,160 60,200 100,200'/%3E%3Cpolygon fill='%2315803d' points='170,140 200,120 200,180 170,200 140,200 140,160'/%3E%3Cpolygon fill='%2315803d' points='30,140 0,120 0,180 30,200 60,200 60,160'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  background-repeat: repeat;
+}
+
+/* Animated gradient border */
+@keyframes gradient-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+.gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, hsl(152 30% 12%), hsl(152 25% 8%));
+  border-radius: var(--radius);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg,
+    hsl(145 80% 42%),
+    hsl(38 92% 50%),
+    hsl(145 80% 42%)
+  );
+  border-radius: calc(var(--radius) + 2px);
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* Field lines pattern */
+.field-pattern {
+  background-image:
+    linear-gradient(90deg, hsla(145, 50%, 30%, 0.1) 1px, transparent 1px),
+    linear-gradient(hsla(145, 50%, 30%, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(152 40% 6%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(145 40% 25%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(145 50% 35%);
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply bg-gradient-to-r from-emerald-500 to-green-600 text-white font-semibold;
+  @apply hover:from-emerald-400 hover:to-green-500;
+  @apply transition-all duration-300;
+  @apply shadow-lg shadow-emerald-500/25;
+}
+
+.btn-primary:hover {
+  @apply shadow-xl shadow-emerald-500/40;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  @apply bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold;
+  @apply hover:from-amber-400 hover:to-orange-400;
+  @apply transition-all duration-300;
+  @apply shadow-lg shadow-amber-500/25;
+}
+
+/* Stat card styling */
+.stat-card {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg,
+    hsla(152, 30%, 15%, 0.6) 0%,
+    hsla(152, 25%, 10%, 0.8) 100%
+  );
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at top right,
+    hsla(145, 80%, 42%, 0.15) 0%,
+    transparent 70%
+  );
+}
+
+/* Trophy/rank styling */
+.rank-gold {
+  @apply text-amber-400;
+  text-shadow: 0 0 20px hsla(38, 92%, 50%, 0.5);
+}
+
+.rank-silver {
+  @apply text-gray-300;
+  text-shadow: 0 0 20px hsla(0, 0%, 70%, 0.5);
+}
+
+.rank-bronze {
+  @apply text-orange-400;
+  text-shadow: 0 0 20px hsla(25, 90%, 50%, 0.5);
+}

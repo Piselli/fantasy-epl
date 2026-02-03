@@ -1,0 +1,15 @@
+[package]
+name = "fantasy_epl"
+version = "1.0.0"
+authors = []
+
+[addresses]
+fantasy_epl_addr = "_"
+
+[dev-addresses]
+fantasy_epl_addr = "0xCAFE"
+
+[dependencies]
+AptosFramework = { git = "https://github.com/movementlabsxyz/aptos-core.git", rev = "l1-migration", subdir = "aptos-move/framework/aptos-framework" }
+
+[dev-dependencies]
