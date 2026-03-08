@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { shortenAddress } from "@/lib/utils";
@@ -42,30 +42,24 @@ export function Navbar() {
   // Don't render wallet-dependent UI until mounted (prevents hydration issues)
   if (!mounted) {
     return (
-      <nav className="relative z-20 border-b border-border/50 backdrop-blur-md bg-background/80">
+      <nav className="relative z-50 border-b border-white/5 backdrop-blur-xl bg-fpl-navy/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-8">
-              <Link href="/" className="flex items-center gap-2 group">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center shadow-lg shadow-emerald-500/30">
-                  <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <Link href="/" className="flex items-center gap-3 group">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-fpl-cyan to-blue-600 flex items-center justify-center shadow-lg shadow-fpl-cyan/20">
+                  <svg className="w-6 h-6 text-fpl-navy" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/>
                     <circle cx="12" cy="12" r="3" />
                     <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" strokeWidth="2"/>
                   </svg>
                 </div>
-                <span className="font-bold text-xl bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-                  Fantasy EPL
+                <span className="font-display font-black text-2xl uppercase tracking-tighter bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+                  FPL<span className="text-fpl-cyan">MOVE</span>
                 </span>
               </Link>
-              <div className="hidden md:flex items-center gap-1">
-                <Link href="/gameweek" className="px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all">Squad</Link>
-                <Link href="/titles" className="px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all">Titles</Link>
-                <Link href="/leaderboard" className="px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all">Leaderboard</Link>
-                <Link href="/admin" className="px-4 py-2 rounded-lg text-muted-foreground/60 hover:text-muted-foreground hover:bg-secondary/30 transition-all text-sm">Admin</Link>
-              </div>
             </div>
-            <div className="px-5 py-2.5 rounded-lg text-sm font-semibold bg-secondary/50 text-muted-foreground">
+            <div className="px-5 py-2.5 rounded-xl border border-white/10 text-sm font-semibold bg-white/5 text-muted-foreground">
               Loading...
             </div>
           </div>
@@ -75,62 +69,64 @@ export function Navbar() {
   }
 
   return (
-    <nav className="relative z-20 border-b border-border/50 backdrop-blur-md bg-background/80">
+    <nav className="relative z-50 border-b border-white/5 backdrop-blur-xl bg-fpl-navy/60 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center gap-8">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-green-600 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-shadow">
-                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center gap-10">
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-fpl-cyan to-blue-600 flex items-center justify-center shadow-lg shadow-fpl-cyan/20 group-hover:shadow-fpl-cyan/40 group-hover:scale-105 transition-all duration-300">
+                <svg className="w-6 h-6 text-fpl-navy" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/>
                   <circle cx="12" cy="12" r="3" />
                   <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" strokeWidth="2"/>
                 </svg>
               </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-                Fantasy EPL
+              <span className="font-display font-black text-2xl uppercase tracking-tighter bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent group-hover:text-white transition-colors">
+                FPL<span className="text-fpl-cyan">MOVE</span>
               </span>
             </Link>
-            <div className="hidden md:flex items-center gap-1">
+            
+            <div className="hidden md:flex items-center space-x-2">
               <Link
                 href="/gameweek"
-                className="px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all"
+                className="px-4 py-2 rounded-lg text-sm font-display font-bold uppercase tracking-wide text-muted-foreground hover:text-white hover:bg-white/5 transition-all"
               >
                 Squad
               </Link>
               <Link
                 href="/titles"
-                className="px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all"
+                className="px-4 py-2 rounded-lg text-sm font-display font-bold uppercase tracking-wide text-muted-foreground hover:text-white hover:bg-white/5 transition-all"
               >
                 Titles
               </Link>
               <Link
                 href="/leaderboard"
-                className="px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all"
+                className="px-4 py-2 rounded-lg text-sm font-display font-bold uppercase tracking-wide text-muted-foreground hover:text-white hover:bg-white/5 transition-all"
               >
                 Leaderboard
               </Link>
+              <div className="h-4 w-px bg-white/10 mx-2 hidden lg:block" />
               <Link
                 href="/admin"
-                className="px-4 py-2 rounded-lg text-muted-foreground/60 hover:text-muted-foreground hover:bg-secondary/30 transition-all text-sm"
+                className="px-4 py-2 rounded-lg text-xs font-display font-bold uppercase tracking-wide text-muted-foreground/50 hover:text-white hover:bg-white/5 transition-all"
               >
                 Admin
               </Link>
             </div>
           </div>
 
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative flex items-center gap-4" ref={dropdownRef}>
             {connected && account ? (
-              <div className="flex items-center gap-4">
-                <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary/50 border border-border">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-sm text-emerald-400 font-mono">
+              <div className="flex items-center gap-3">
+                <div className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:border-fpl-cyan/30 transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-fpl-cyan animate-pulse glow-cyan" />
+                  <span className="text-sm text-fpl-cyan font-display font-bold uppercase tracking-wider">
                     {shortenAddress(account.address.toString())}
                   </span>
                 </div>
                 <button
                   onClick={disconnect}
-                  className="px-4 py-2 rounded-lg text-sm font-medium bg-destructive/10 text-destructive hover:bg-destructive/20 transition-colors"
+                  className="px-4 py-2 rounded-xl text-sm font-display font-bold uppercase tracking-wider bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive hover:text-white transition-all duration-300"
                 >
                   Disconnect
                 </button>
@@ -139,16 +135,16 @@ export function Navbar() {
               <>
                 <button
                   onClick={() => setShowWalletList(!showWalletList)}
-                  className="btn-primary px-5 py-2.5 rounded-lg text-sm font-semibold"
+                  className="group relative px-6 py-2.5 rounded-xl text-sm font-display font-bold uppercase tracking-wider overflow-hidden bg-fpl-purple text-white hover:text-fpl-navy hover:bg-fpl-cyan transition-all duration-300 glow-purple hover:glow-cyan focus:outline-none focus:ring-2 focus:ring-fpl-cyan focus:ring-offset-2 focus:ring-offset-fpl-navy"
                 >
-                  Connect Wallet
+                  <span className="relative z-10">Connect Wallet</span>
                 </button>
 
                 {showWalletList && (
-                  <div className="absolute right-0 mt-2 w-64 glass-card rounded-xl border border-border shadow-xl overflow-hidden">
-                    <div className="p-3 border-b border-border">
-                      <p className="text-sm font-medium text-foreground">Select Wallet</p>
-                      <p className="text-xs text-muted-foreground">Choose your preferred wallet</p>
+                  <div className="absolute right-0 top-full mt-4 w-72 glass-card rounded-2xl border border-fpl-cyan/20 shadow-2xl shadow-black/50 overflow-hidden origin-top-right transform transition-all">
+                    <div className="p-4 border-b border-white/10 bg-white/5">
+                      <p className="text-sm font-display font-bold uppercase tracking-wider text-white">Select Wallet</p>
+                      <p className="text-xs text-muted-foreground mt-1">Movement Network Compatible</p>
                     </div>
                     <div className="p-2 max-h-64 overflow-y-auto">
                       {availableWallets.length > 0 ? (
@@ -156,26 +152,31 @@ export function Navbar() {
                           <button
                             key={wallet.name}
                             onClick={() => handleConnectWallet(wallet.name)}
-                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-secondary/50 transition-colors text-left"
+                            className="w-full flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-left group"
                           >
-                            {wallet.icon && (
-                              <img
-                                src={wallet.icon}
-                                alt={wallet.name}
-                                className="w-8 h-8 rounded-lg"
-                              />
-                            )}
+                            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 p-2 group-hover:border-fpl-cyan/50 transition-colors flex shrink-0 items-center justify-center">
+                              {wallet.icon && (
+                                <img
+                                  src={wallet.icon}
+                                  alt={wallet.name}
+                                  className="w-full h-full object-contain"
+                                />
+                              )}
+                            </div>
                             <div>
-                              <p className="text-sm font-medium text-foreground">{wallet.name}</p>
-                              <p className="text-xs text-emerald-400">Installed</p>
+                              <p className="text-sm font-display font-bold text-white group-hover:text-fpl-cyan transition-colors">{wallet.name}</p>
+                              <p className="text-xs text-fpl-green font-medium uppercase tracking-wider mt-0.5">Installed</p>
                             </div>
                           </button>
                         ))
                       ) : (
-                        <div className="px-3 py-4 text-center">
-                          <p className="text-sm text-muted-foreground">No wallets found</p>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            Install Nightly or another Movement-compatible wallet
+                        <div className="p-6 text-center">
+                          <div className="w-12 h-12 rounded-xl bg-white/5 mx-auto mb-3 flex items-center justify-center text-muted-foreground text-sm">
+                            <span className="text-2xl">🔌</span>
+                          </div>
+                          <p className="text-sm font-bold text-white mb-1">No Wallets Found</p>
+                          <p className="text-xs text-muted-foreground/80 leading-relaxed">
+                            Install <a href="https://nightly.app" target="_blank" rel="noreferrer" className="text-fpl-cyan hover:underline">Nightly</a> or another Movement wallet to play.
                           </p>
                         </div>
                       )}

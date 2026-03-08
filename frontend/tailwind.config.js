@@ -15,6 +15,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -38,17 +42,26 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        // EPL-themed colors
-        epl: {
-          purple: "#38003c",
-          cyan: "#00ff87",
-          pink: "#e90052",
+        
+        // Custom FPL+Sorare Palette Extensions
+        fpl: {
+          navy: "#0A0E17",
+          cyan: "#00F0FF",
+          purple: "#8B5CF6",
+          green: "#00FF87",
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'sans-serif'],
+        display: ['"Outfit"', '"Inter"', 'sans-serif'],
+      },
+      animation: {
+        'spin-slow': 'spin-slow 4s linear infinite',
       },
     },
   },
